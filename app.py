@@ -15,8 +15,16 @@ class Whisperer:
         full_prompt = f"{self.prompt}\n{message}" if self.prompt 
         return self._generate_response(full_prompt)
 
-    def _generate_response(self, prompt): 
-        response = openai.Completion.create(
-            engine=self.engine,
-            prompt=prompt
-        )
+    def _generate_response(self, prompt, max_tokens=-1): 
+        if max_tokens==-1:
+            response = openai.Completion.create(
+                engine=self.engine,
+                prompt=prompt
+            )
+        else:
+            response = openai.Completion.create(
+                engine=self.engine,
+                prompt=prompt,
+                max_tokens=max_tokens
+            )
+        return response.choices
