@@ -9,6 +9,9 @@ __pycache__/
 # ignore batch scripts
 *.sh
 
+#ignore config files
+config.ini
+
 # Distribution / packaging
 .Python
 build/
